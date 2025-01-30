@@ -8,6 +8,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 ps = PorterStemmer()
 
+nltk.download('punkt')
+nltk.download('punkt_tab')
 
 def transform_text(text):
     text = text.lower()
