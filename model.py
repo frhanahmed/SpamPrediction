@@ -51,7 +51,7 @@ df['Num_Of_Characters'] = df['Text'].apply(len)
 
 
 # num of words
-# nltk.download('punkt_tab')
+nltk.download('punkt_tab')
 df['Num_Of_Words'] = df['Text'].apply(lambda x:len(nltk.word_tokenize(x)))
 
 # num of sentences
