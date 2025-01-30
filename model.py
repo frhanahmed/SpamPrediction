@@ -44,7 +44,7 @@ plt.show()
 # Data Preprocessing
 
 import nltk
-# nltk.download('punkt')
+nltk.download('punkt')
 
 # num of characters
 df['Num_Of_Characters'] = df['Text'].apply(len)
@@ -62,7 +62,7 @@ from nltk.stem.porter import PorterStemmer
 from nltk.corpus import stopwords
 ps = PorterStemmer()
 
-# nltk.download('stopwords')
+nltk.download('stopwords')
 
 def transform_text(text):
     text = text.lower()
