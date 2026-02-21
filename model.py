@@ -29,10 +29,6 @@ df['Target'] = encoder.fit_transform(df['Target'])
 # remove duplicates
 df = df.drop_duplicates(keep='first')
 
-# print(df.duplicated().sum()) for checking duplicate values
-
-# print(df.shape) just for debugging purpose
-
 # Just to check the number of SPAM and NOT-SPAM msgs in the dataset
 print(df['Target'].value_counts())
 
@@ -88,9 +84,6 @@ def transform_text(text):
     return " ".join(y)
 
 df['Transformed_text'] = df['Text'].apply(transform_text)
-
-# print(df.sample(5)) just for debugging purpose
-# print(transform_text("I'm gonna be home soon and i don't want to talk about this stuff anymore tonight, k? I've cried enough today."))
 
 # Model Building
 
