@@ -45,12 +45,45 @@ st.write("Enter a message below to check whether it is Spam or Not Spam.")
 # =============================
 ps = PorterStemmer()
 
-nltk.download('punkt')
-nltk.download('stopwords')
+# nltk.download('punkt')
+# nltk.download('stopwords')
+
+# def transform_text(text):
+#     text = text.lower()
+#     # text = nltk.word_tokenize(text)
+#     text = text.split()
+
+#     y = []
+#     for i in text:
+#         if i.isalnum():
+#             y.append(i)
+
+#     text = y[:]
+#     y.clear()
+
+#     for i in text:
+#         if i not in stopwords.words('english') and i not in string.punctuation:
+#             y.append(i)
+
+#     text = y[:]
+#     y.clear()
+
+#     for i in text:
+#         y.append(ps.stem(i))
+
+#     return " ".join(y)
+
+
+# Safe stopwords loading
+try:
+    stop_words = set(stopwords.words('english'))
+except LookupError:
+    nltk.download('stopwords')
+    stop_words = set(stopwords.words('english'))
 
 def transform_text(text):
     text = text.lower()
-    text = nltk.word_tokenize(text)
+    text = text.split()
 
     y = []
     for i in text:
@@ -61,7 +94,7 @@ def transform_text(text):
     y.clear()
 
     for i in text:
-        if i not in stopwords.words('english') and i not in string.punctuation:
+        if i not in stop_words and i not in string.punctuation:
             y.append(i)
 
     text = y[:]
@@ -71,6 +104,9 @@ def transform_text(text):
         y.append(ps.stem(i))
 
     return " ".join(y)
+
+
+
 
 tfidf = pickle.load(open('vectorizer.pkl','rb'))
 model = pickle.load(open('model.pkl','rb'))
